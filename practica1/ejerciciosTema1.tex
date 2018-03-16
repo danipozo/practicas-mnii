@@ -37,7 +37,7 @@ x + logx = 0
 	\item $\forall x \in \mathbb R ^+ \ \ f'(x) \ne 0$
 	\item $f''(x)= -\frac{1}{x^2}$ es siempre negativa en $\mathbb R ^2$ y por tanto en $[a,1]$.
 \end{enumerate}
-Luego tenemos las condiciones para aplicar la proposición de la convergencia global del método de Newton. Por ello $\forall a \in (0,1), \forall x_0 \in [a,1]$ tal que $h(x_0)=f(x_0)f''(x_0)\geq0$ tenemos que la sucesión converge.
+Luego tenemos las condiciones para aplicar la proposición de la convergencia global del método de Newton. Por ello $\forall a \in (0,\frac{1}{2}), \forall x_0 \in [a,1]$ tal que $h(x_0)=f(x_0)f''(x_0)\geq0$ tenemos que la sucesión converge.
 
 A continuación veremos para qué valores $y$ se cumple lo enunciado.
 
@@ -60,7 +60,7 @@ h'(x_0)=\frac{-x_0-Lnx_0}{x_0+1+2x_0^2}=0 \iff x_0=b\]\[
 h'(1)<0
 \]
 
-Por ello nuestra $h$ es decreciente, su mínimo se alcanza en 1 y su máximo se alcanza en $b$.Comprobamos que $\forall a\in(0,\frac{1}{2})$ $ x_1 \ge a$:
+Por ello nuestra $h$ es decreciente, su mínimo se alcanza en 1 y su máximo se alcanza en $b$. Comprobamos que $\forall a\in(0,\frac{1}{2})$ $ x_1 \ge a$:
 \[
 x_1=h(x_0)=\frac{1-Lnx_0}{1+\frac{1}{x_0}}\ge a\iff \frac{1-Ln1}{1+\frac{1}{1}} \geq 1 \iff \frac{1}{2} \ge a 
 \]
@@ -71,12 +71,12 @@ Comprobamos que $x_1\leq b$:
 x_1=h(x_0)=\frac{1-Lnx_0}{1+\frac{1}{x_0}}\leq b \iff \frac{1-Lnb}{1+\frac{1}{b}} \leq b \iff \frac{b-bLnb}{b+1} \leq b \iff \frac{1-Lnb}{b+1} \leq 1
 \]
 
-Como no conocemos el valor $b$, veremos cuál el máximo valor de \[g(b)=\frac{1-Lnb}{b+1} \forall b \in (\frac{1}{2},1)\] que donde nos hemos asegurado anteriormente que existe la solución.
+Como no conocemos el valor $b$, veremos cuál el máximo valor de \[g(b)=\frac{1-Lnb}{b+1} \forall b \in (\frac{1}{2},1)\] que es el intervalo donde nos hemos asegurado, al inicio del ejercicio, que existe la solución de nuestra ecuación.
 
-Terminando, como $g'(b)<0$ $\forall b \in (\frac{1}{2},1)$, tenemos que:
-\[\frac{1-Lnb}{b+1}\leq \frac{1-Ln(1/2)}{1/2+1}=0.795431... < 1\]
+Terminando, como $g'(b)<0$ $\forall b \in (\frac{1}{2},1)$, tenemos que la función es estrictamente decreciente en todo el intervalo y por ello su máximo se alcanza en $\frac{1}{2}$ :
+\[\frac{1-Lnb}{b+1}\leq \frac{1-Ln(\frac{1}{2})}{\frac{1}{2}+1}=0.795431... < 1\]
 
-Como queríamos demostar. Por tanto, $\forall a\in(0,\frac{1}{2})$si $x_0\in[a,1]$ el método de Newton-Raphson converge.
+Como queríamos demostar. Por tanto, $\forall a\in(0,\frac{1}{2})$si $x_0\in[a,1]$ el método de Newton-Raphson $b$ converge siendo por aplicación directa del teorema de convergencia global de Newton si $x_0 \in [a,b]$ y porque $\forall x_0 \in [b,1], x_1\in [a,b]$ y nuevamente se aplica el teorema de la convergencia global de Newton.
 \end{itemize}
 
 \section{Ejercicio 10}
