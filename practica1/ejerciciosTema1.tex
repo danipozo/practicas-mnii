@@ -5,7 +5,8 @@
  \usepackage{amssymb}
  \usepackage{amsmath}
  \usepackage{verbatim}
-\usepackage{systeme}
+ \usepackage{systeme}
+ \usepackage{array}
 
 \title{\textbf{Ejercicios Tema 1}}
 \author{Laura Gómez, Javier Sáez, Daniel Pozo, Luis Ortega}
@@ -16,7 +17,7 @@
 \section{Ejercicio 7}
 \textbf{Enunciado}: Se considera la ecuación:
 \[
-x + logx = 0
+x + \log x = 0
 \]
 \begin{itemize}
 	\item Prueba que dicha ecuación posee una única solución
@@ -24,13 +25,13 @@ x + logx = 0
 \end{itemize}
 \textbf{Resolución}:\\
 \begin{itemize}
-	\item Si $f(x) = x + logx$, entonces $f'(x) = 1 + \frac{1}{x}$. Veremos cuándo esta derivada es igual a 0.
+	\item Si $f(x) = x + \log x$, entonces $f'(x) = 1 + \frac{1}{x}$. Veremos cuándo esta derivada es igual a 0.
 	\[
 	1+\frac{1}{x} = 0 \iff x = -1.
 	\]
 	Ahora, la función $f(x)$ está definida únicamente en el intervalo $(0,+\infty)$, y es una función creciente en todo su dominio, luego en caso de existir la solución, a partir de ahora conocida como $b$, será única. Además, sabemos que existe y que $b\in(1/2,1)$ pues, al aplicar Bolzano, $f(1/2) < 0$ y $f(1) > 0$.
 	
-	\item Sabemos que $f'(x)>0 \ \ \forall x \in R^+$. Además, $f\in \mathcal{C}^2(\mathbb{R}^+)$, luego $f\in \mathcal{C}^2([a,1]) \ \ \forall a \in (0,1/2)$. Nótese que $f(a) < 0 \ \ \forall a \in (0,1/2)$ y que $f(1) > 0$. Tenemos así lo siguiente:
+	\item Sabemos que $f'(x)>0 \ \ \forall x \in \mathbb{R}^+$. Además, $f\in \mathcal{C}^2(\mathbb{R}^+)$, luego $f\in \mathcal{C}^2([a,1]) \ \ \forall a \in (0,1/2)$. Nótese que $f(a) < 0 \ \ \forall a \in (0,1/2)$ y que $f(1) > 0$. Tenemos así lo siguiente:
 	\begin{enumerate}
 	\item $f \in \mathcal C ^2 (\mathbb R ^+)$
 	\item $f(a)f(1) < 0 \ \  \forall a \in (0,1/2)$
@@ -42,7 +43,7 @@ Luego tenemos las condiciones para aplicar la proposición de la convergencia gl
 A continuación veremos para qué valores $y$ se cumple lo enunciado.
 
 \[
-f(y)f''(y)=(y+Lny)\frac{-1}{y^2}\geq 0\iff y+Lny \leq 0 \iff f(y)\leq 0
+f(y)f''(y)=(y+\log y)\frac{-1}{y^2}\geq 0\iff y+\log y \leq 0 \iff f(y)\leq 0
 \]
 
 Por todo lo que conocemos hasta ahora sobre $f$, como que tiene una única solución llamada $b$ y que es una función creciente, podemos afirmar entonces que si $x_0\in[a,b]$ entonces el método de Newton converge a la raiz $b$. Nuestra pregunta a continuación es: si $x_0\in[b,1]$, ¿sigue convergiendo la ecuación?
@@ -50,31 +51,40 @@ Por todo lo que conocemos hasta ahora sobre $f$, como que tiene una única soluc
 Para ello, calcularemos el valor $x_1$ a partir de un $x_0\in[b,1]$ cualquiera pero fijo y veremos qué sucede con él.
 
 \[
-x_1=x_0-\frac{f(x_0)}{f'(x_0)}=x_0-\frac{x_0-Lnx_0}{1+\frac{1}{x_0}}=\frac{1-Lnx_0}{1+\frac{1}{x_0}}=h(x_0)
+x_1=x_0-\frac{f(x_0)}{f'(x_0)}=x_0-\frac{x_0-\log x_0}{1+\frac{1}{x_0}}=\frac{1-\log x_0}{1+\frac{1}{x_0}}=h(x_0)
 \]
 
 ¿$x_1\in[0,b]$? O lo que es lo mismo, ¿$h:[b,1]\rightarrow A \subset[a,b]$? Veremos cómo es el crecimiento de $h$
 
 \[
-h'(x_0)=\frac{-x_0-Lnx_0}{x_0+1+2x_0^2}=0 \iff x_0=b\]\[
+h'(x_0)=\frac{-x_0-\log x_0}{x_0+1+2x_0^2}=0 \iff x_0=b\]\[
 h'(1)<0
 \]
 
 Por ello nuestra $h$ es decreciente, su mínimo se alcanza en 1 y su máximo se alcanza en $b$. Comprobamos que $\forall a\in(0,\frac{1}{2})$ $ x_1 \ge a$:
 \[
-x_1=h(x_0)=\frac{1-Lnx_0}{1+\frac{1}{x_0}}\ge a\iff \frac{1-Ln1}{1+\frac{1}{1}} \geq 1 \iff \frac{1}{2} \ge a 
+x_1=h(x_0)=\frac{1-\log x_0}{1+\frac{1}{x_0}}\ge a\iff \frac{1-\log 1}{1+\frac{1}{1}} \geq 1 \iff \frac{1}{2} \ge a 
 \]
 
 Comprobamos que $x_1\leq b$:
 
-\[
-x_1=h(x_0)=\frac{1-Lnx_0}{1+\frac{1}{x_0}}\leq b \iff \frac{1-Lnb}{1+\frac{1}{b}} \leq b \iff \frac{b-bLnb}{b+1} \leq b \iff \frac{1-Lnb}{b+1} \leq 1
+\[\arraycolsep=2pt\def\arraystretch{2.2}
+\begin{array}{>{\displaystyle}ll}
+  x_1=h(x_0)=\frac{1-\log x_0}{1+\frac{1}{x_0}}\leq b & \iff \\
+  \frac{1-\log b}{1+\frac{1}{b}} \leq b & \iff \\
+  \frac{b-b\log b}{b+1} \leq b & \iff \\
+  \frac{1-\log b}{b+1} \leq 1
+\end{array}
 \]
 
-Como no conocemos el valor $b$, veremos cuál el máximo valor de \[g(b)=\frac{1-Lnb}{b+1} \forall b \in (\frac{1}{2},1)\] que es el intervalo donde nos hemos asegurado, al inicio del ejercicio, que existe la solución de nuestra ecuación.
+Como no conocemos el valor $b$, veremos cuál el máximo valor de
 
-Terminando, como $g'(b)<0$ $\forall b \in (\frac{1}{2},1)$, tenemos que la función es estrictamente decreciente en todo el intervalo y por ello su máximo se alcanza en $\frac{1}{2}$ :
-\[\frac{1-Lnb}{b+1}\leq \frac{1-Ln(\frac{1}{2})}{\frac{1}{2}+1}=0.795431... < 1\]
+\[g(b)=\frac{1-\log b}{b+1} \quad \forall b \in \left(\frac{1}{2},1\right)\]
+
+que es el intervalo donde nos hemos asegurado, al inicio del ejercicio, que existe la solución de nuestra ecuación.
+
+Terminando, como $g'(b)<0$ $\forall b \in \left(\frac{1}{2},1\right)$, tenemos que la función es estrictamente decreciente en todo el intervalo y por ello su máximo se alcanza en $\frac{1}{2}$ :
+\[\frac{1-\log b}{b+1}\leq \frac{1-\log (\frac{1}{2})}{\frac{1}{2}+1}=0.795431... < 1\]
 
 Como queríamos demostar. Por tanto, $\forall a\in(0,\frac{1}{2})$si $x_0\in[a,1]$ el método de Newton-Raphson $b$ converge siendo por aplicación directa del teorema de convergencia global de Newton si $x_0 \in [a,b]$ y porque $\forall x_0 \in [b,1], x_1\in [a,b]$ y nuevamente se aplica el teorema de la convergencia global de Newton.
 \end{itemize}
@@ -149,8 +159,8 @@ Comprobamos para qué valores de $\lambda$, nuestro punto fijo $x_\lambda = 1 - 
 Se considera el sistema de ecuaciones:
 \[
 \begin{cases}
-	3x_1 - cos(x_2x_3) - \dfrac{1}{2} = 0\\
-	 x_1^2 -81(x_2+0.1)^2 + sinx_3 +1.06 = 0\\
+	3x_1 - \cos (x_2x_3) - \dfrac{1}{2} = 0\\
+	 x_1^2 -81(x_2+0.1)^2 + \sin x_3 +1.06 = 0\\
 	 e^{-x_1x_2}+20x_3+\dfrac{10\pi-3}{3} = 0
 \end{cases}
 \] 
@@ -170,10 +180,10 @@ Se considera el sistema de ecuaciones:
 \begin{itemize}
 	\item Despejando en nuestro sistema, obtejemos:
 	\[
-	\begin{cases}
-	x_1 = \frac{cos(x_2x_3) + 1/2}{3}\\
- x_2 = 1/90 (9 - \sqrt2 \sqrt{53 + 50 x_1^2 + 50 sin(x_3)}\ )\\
-  x_3 = \frac{-e^{-x_1x_2}- \frac{10\pi-3}{3}}{20}
+	\displaystyle\begin{cases}
+	x_1 = \dfrac{\cos (x_2x_3) + 1/2}{3}\\
+ x_2 = 1/90 (9 - \sqrt2 \sqrt{53 + 50 x_1^2 + 50 \sin (x_3)}\ )\\
+  x_3 = \dfrac{-e^{-x_1x_2}- \frac{10\pi-3}{3}}{20}
 \end{cases}
 	\]
 	queda así despejado nuestro sistema.
@@ -181,23 +191,28 @@ Se considera el sistema de ecuaciones:
 	El resultado del ejercicio anterior es:\\
 	Si $g:D\subset \mathbb R^n \to \mathbb R^n$ de clase 1 e $D$, si existe $L \in (0,1)$ tal que:
 	\[
-	|\dfrac{\partial g_i(x)}{\partial x_j}| \leq \dfrac{L}{n}, \quad \forall x \in D
+	\left|\dfrac{\partial g_i(x)}{\partial x_j}\right| \leq \dfrac{L}{n}, \quad \forall x \in D
 	\]
 	entonces $g$ es contractiva.
 	
 	Ahora, usaremos que $D$ es un dominio y que $g(x) = (x_1,x_2,x_3)$ es contractiva (lo probaremos ahora) para ver que tiene un único punto $x^*$ atal que $g(x^*) = x^*$.
 	
 	Vamos por ello a realizar la jacobiana de $g$.
-\[	\begin{pmatrix}
-    0 & \frac{-x3 sin(x_2x_3)}{3} & \frac{-x2 sin(x_2x_3)}{3}\\
+        
+        \[
+        \setlength{\delimitershortfall}{0pt}
+        \begin{pmatrix}
+    0 & \dfrac{-x3 \sin (x_2x_3)}{3} & \dfrac{-x2 \sin (x_2x_3)}{3}\\[2ex]
     
-  \frac{-5 \sqrt2 x}{9 \sqrt{53 + 50 x^2 + 50 sin(x_3)}}& 0 &  -\frac{5 cos(x)}{9 \sqrt2 \sqrt{53 + 50 x_1^2 + 50 sin(x)}} \\
+  \dfrac{-5 \sqrt2 x}{9 \sqrt{53 + 50 x^2 + 50 \sin (x_3)}}& 0 &  -\dfrac{5 \cos (x)}{9 \sqrt2 \sqrt{53 + 50 x_1^2 + 50 \sin(x)}} \\[2ex]
     
-    \frac{-x_2e^{-x_1x_2}}{20} & 
-    \frac{-x_1e^{-x_1x_2}}{20} & 0
+    \dfrac{-x_2e^{-x_1x_2}}{20} & 
+    \dfrac{-x_1e^{-x_1x_2}}{20} & 0
   \end{pmatrix}
- \]
- Podemos ver que, como $-1 \leq x_i \leq 1$, entonces cada una de estas derivadas es menor que $\dfrac{1}{3}$. Por tanto, como $n=3$, tomando $L$ cercano a 1, tenemos la condición que queríamos.Podemos afirmar así que $g$ es contractiva. Además, $D$ es claramente un dominio, por lo que concluimos que $\exists ! x^* : g(x^*) = x^*$.
+        \]
+        
+
+ Podemos ver que, como $-1 \leq x_i \leq 1$, entonces cada una de estas derivadas es menor que $\dfrac{1}{3}$. Por tanto, como $n=3$, tomando $L$ cercano a 1, tenemos la condición que queríamos. Podemos afirmar así que $g$ es contractiva. Además, $D$ es claramente un dominio, por lo que concluimos que $\exists ! x^* : g(x^*) = x^*$.
 \end{itemize}
 
 \section{Ejercicio 21}
