@@ -68,13 +68,13 @@ x_1=h(x_0)=\frac{1-Lnx_0}{1+\frac{1}{x_0}}\ge a\iff \frac{1-Ln1}{1+\frac{1}{1}} 
 Comprobamos que $x_1\leq b$:
 
 \[
-x_1=h(x_0)=\frac{1-Lnx_0}{1+\frac{1}{x_0}}\leq b \iff \frac{1-Lnb}{1+\frac{1}{b}} \leq b \iff \frac{b-bLnb}{b+1} \leq b \iff \frac{1+Lnb}{b+1} \leq 1
+x_1=h(x_0)=\frac{1-Lnx_0}{1+\frac{1}{x_0}}\leq b \iff \frac{1-Lnb}{1+\frac{1}{b}} \leq b \iff \frac{b-bLnb}{b+1} \leq b \iff \frac{1-Lnb}{b+1} \leq 1
 \]
 
-Como no conocemos el valor $b$, veremos cuál el máximo valor de \[g(b)=\frac{1+Lnb}{b+1} \forall b \in (\frac{1}{2},1)\] que donde nos hemos asegurado anteriormente que existe la solución.
+Como no conocemos el valor $b$, veremos cuál el máximo valor de \[g(b)=\frac{1-Lnb}{b+1} \forall b \in (\frac{1}{2},1)\] que donde nos hemos asegurado anteriormente que existe la solución.
 
 Terminando, como $g'(b)<0$ $\forall b \in (\frac{1}{2},1)$, tenemos que:
-\[\frac{1+Lnb}{b+1}\leq \frac{1+Ln(1/2)}{1/2+1}=0.795431... < 1\]
+\[\frac{1-Lnb}{b+1}\leq \frac{1-Ln(1/2)}{1/2+1}=0.795431... < 1\]
 
 Como queríamos demostar. Por tanto, $\forall a\in(0,\frac{1}{2})$si $x_0\in[a,1]$ el método de Newton-Raphson converge.
 \end{itemize}
