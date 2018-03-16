@@ -4,7 +4,7 @@
  \usepackage[utf8]{inputenc}
  \usepackage{amssymb}
  \usepackage{amsmath}
-
+ \usepackage{verbatim}
 \usepackage{systeme}
 
 \title{\textbf{Ejercicios Tema 1}}
@@ -107,11 +107,11 @@ Como queríamos demostar. Por tanto, $\forall a\in(0,\frac{1}{2})$si $x_0\in[a,1
 	
 	Tenemos que tener entonces que $\lambda \ne 0$. Ahora, tenemos que ver cuándo estos puntos fijos están dentro del intervalo $[0,1]$. Vemos que si $\lambda \in (0,1)$, entonces $\dfrac{1}{\lambda}>1$, por lo que el punto fijo sería $x_\lambda < 0$, y no estaría en nuestro intervalo. Por tanto, para que nuestros puntos fijos se queden en $[0,1]$, necesitamos que $\lambda \in [1,4]$
 	
-	\item Sea $x_{n+1} = g_\lambda(x) = \lambda x(1-x) = \lambda x - \lambda x^2$ con $\lambda \in [0,4]$ y $x \in [0,1]$. Como sbemos que $g([0,1]) \subset [0,1]$, y sabiendo que los puntos fijos son de la forma $x_\lambda = 1 - \dfrac{1}{\lambda}$, analizaremos la convergencia de dicha sucesión a los puntos fijos $x=x_\lambda$ y $x=0$.\\
-	Si $\lambda = 0$, entonces $g_0 (x) = 0$ para todo $x$, luego tendremos una función constante con único punto fijo $x_0 = 0$.
-	
+	\item Sea $x_{n+1} = g_\lambda(x) = \lambda x(1-x) = \lambda x - \lambda x^2$ con $\lambda \in [1,4]$ y $x \in [0,1]$. Como sabemos que $g([0,1]) \subset [0,1]$, y sabiendo que los puntos fijos son de la forma $x_\lambda = 1 - \dfrac{1}{\lambda}$, analizaremos la convergencia de dicha sucesión a los puntos fijos $x=x_\lambda$ y $x=0$.
+
+\begin{comment}	
 	Vamos a usar el siguiente resultado:
-	
+
 	Sea $[a,b] \subseteq \mathbb R$ un intervalo cerrado y $g:[a,b] \to \mathbb R$ tal que:
 	\begin{enumerate}
 	\item $g_\lambda(x) \in [a,b] \ \ \ \forall x \in [a,b]$
@@ -119,25 +119,31 @@ Como queríamos demostar. Por tanto, $\forall a\in(0,\frac{1}{2})$si $x_0\in[a,1
 \end{enumerate}
 
 Sabemos que la primera condición se verifica $\forall \lambda \in [0,4]$ por el primer apartado. La segunda condición se verifica si $|g_\lambda'(x)| \leq L < 1 \ \ \ \forall x \in [a,b]$.
+\end{comment}
+Sabiendo que si $|g'_\lambda(x)|<1$ en $x$ punto fijo, entonces este es atractivo. De la misma forma si $|g'_\lambda(x)|>1$ entonces es repulsivo. Analicemos primero el caso del punto fijo $x=0$ con $g_\lambda'(x)= \lambda - 2\lambda x$, luego:
 
-Observamos que: $g_\lambda'= \lambda - 2\lambda x$ y miramos cuándo esto, en valor absoluto, es menor o igual que 1:
+\[g_\lambda'(0) = \lambda - 2\lambda 0=\lambda \implies \forall \lambda \in [1,4], g'_\lambda(0)>0\] luego $x=0$ es un punto fijo repulsivo siempre.
+
+Veamos ahora qué sucede en $x=x_\lambda$ punto fijo. Miremos cuándo $g_\lambda'(x)= \lambda - 2\lambda x$ es, en valor absoluto, es menor o igual que 1 para averiguar su comportamiento en función de $\lambda$:
 \[
 g_\lambda ' = 1 \implies \lambda - 2\lambda x = 1 \implies x = \frac{1}{2} - \frac{1}{2\lambda}
 \]
-De forma análoga, $g_\lambda' = -1 $ se da cuando $x = \frac{1}{2} + {1}{2\lambda}$.
-	En estos dos punto,s tenemos que el valor absoluto de la derivada es 1. Ahora, esutdiemos el crecimiento y decrecimiento de esta derivada. Para ello, vemos que $g\lambda''(x) = -2 \lambda$, luego $g_\lambda'$ es decreciente para todo $\lambda \in [0,4]$. Por tanto, $\forall x \in(\frac{1}{2}-\frac{1}{2\lambda},\frac{1}{2}+\frac{1}{2\lambda})$, se tiene que $|g'(x)| < 1$, por lo que no podemos aplicar el resultado que hemos dado pues el intervalo es abierto.\\
+De forma análoga, $g_\lambda' = -1 $ se da cuando $x = \frac{1}{2} + \frac{1}{2\lambda}$.
+	En estos dos puntos, tenemos que el valor absoluto de la derivada es 1. Ahora, esutudiemos el crecimiento y decrecimiento de esta derivada. Para ello, vemos que $g_\lambda''(x) = -2 \lambda$, luego $g_\lambda'$ es decreciente para todo $\lambda \in [1,4]$. Por tanto, $\forall x \in(\frac{1}{2}-\frac{1}{2\lambda},\frac{1}{2}+\frac{1}{2\lambda})$, se tiene que $|g'(x)| < 1$.\\
 
-Comprobamos para qué valores de $\lambda$, nuestro punto fijo $x_\lambda = 1 - \dfrac{1}{\lambda}$ pertenece a dicho intervalo o vemos cuándo $|h(\lambda)| = |g_\lambda(x_\lambda)| = 1$, tendremos que:
+
+Comprobamos para qué valores de $\lambda$, nuestro punto fijo $x_\lambda = 1 - \dfrac{1}{\lambda}$ pertenece a dicho intervalo o vemos cuándo $|g'_\lambda(x_\lambda)| = 1$, tendremos que:
 	
 	\begin{itemize}
-	\item Si $\lambda \in (1,3)$, entonces $|h(\lambda)| < 1 \implies x_\lambda$ es un punto fijo atractivo
-	\item Si $\lambda \in [0,1) \cup (3,4] \implies |h(\lambda)| > 1 \implies x_\lambda$ es un punto fijo repulsivo
-	\item Si $\lambda = 1$ ó $\lambda = 3 \implies |h(\lambda)| = 1 \implies$ no podemos afirmar nada
+	\item Si $\lambda \in (1,3)$, entonces $|g'_\lambda(x_\lambda)| < 1 \implies x_\lambda$ es un punto fijo atractivo
+	\item Si $\lambda \in(3,4] \implies |g'_\lambda(x_\lambda)| > 1 \implies x_\lambda$ es un punto fijo repulsivo
+	\item Si $\lambda = 1$ tenemos que $|g'_1(x_1)|=|g'_\lambda(0)|$ que, como ya hemos afirmado antes, es repulsivo.
+	\item Si $\lambda = 3 \implies |g'_3(x_3)|=|g'_3(\frac{2}{3})|=1$ En este caso, si analizamos el límite por la izquierda y por la derecha de $x_3=\frac{2}{3}$, viéndose que el límite por la izquierda es mayor estricto que 1 y menor estricto que 1 si tomamos el límite por la derecha. De esta forma vemos que, en este caso, los valores a la izquierda del punto fijo se ven atraídos hacia a él y los valores a la derecha se ven repelidos.
 	
 	\end{itemize}
 
 \end{itemize}
-
+ 
 \section{Ejercicio 18}
 \textbf{Enunciado}:
 Se considera el sistema de ecuaciones:
