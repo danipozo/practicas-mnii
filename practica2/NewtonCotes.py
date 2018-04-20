@@ -1,5 +1,6 @@
 from sympy import Symbol
 from sympy import integrate
+from decimal import *
 """
     Estos seran los datos de entrada de nuestro programa.
         f(x) representa la funcion que queremos integrar
@@ -11,7 +12,7 @@ f = 1/(1+x**2)
 
 a=-4
 b=4
-n=4
+n=10
 
 """
     A partir de aqui, comienza el codigo de nuestro programa.
@@ -20,7 +21,7 @@ n=4
     de la integral.
 """
 
-h=(b-a)/n
+h=Decimal((b-a))/Decimal(n)
 
 nodos=[]
 for i in range(n+1):
@@ -35,8 +36,8 @@ for i in range(n+1):
             """print(aux)"""
     pesos.append(aux)
 
-print(pesos[0])
-print(integrate(pesos[0],(x,a,b)))
+"""print(pesos[0])
+print(integrate(pesos[0],(x,a,b)))"""
 
 """
     Una vez que tenemos calculados los pesos, en funcion de x, calcularemos el
