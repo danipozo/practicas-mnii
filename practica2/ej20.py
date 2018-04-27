@@ -20,7 +20,7 @@ n4 = 1
 
 
 def calcular(f,a,b,n):
-    while (abs(romberg(f,a,b,n-1) - romberg(f,a,b,n)) < 10**6):
+    while (abs(romberg(f,a,b,n-1) - romberg(f,a,b,n)) < 10**(-6)):
     frase = "\n" + "Iteracion " + str(n) + ":" + "|R(n-1) - R(n)|" + str(abs(romberg(f,a,b,n-1) - romberg(f,a,b,n)))
     print(frase)
     n = n+1
