@@ -26,13 +26,21 @@ def calcular(f,a,b,n):
 
 print("Función 1: x^2 * log(x)")
 calcular(f1,af1,bf1,n1)
+v1 = integrate.quad(f1,af1,bf1)
+print("El valor de real era:", v1)
 
 print("Función 2: x^3 * e^(-x)")
 calcular(f2,af2,bf2,n2)
+v2 = integrate.quad(f2,af2,bf2)
+print("El valor de real era:", v2)
 
 print("Función 3: (3x/(x^2 -4))")
 calcular(f3,af3,bf3,n3)
+v3 = integrate.quad(f3,af3,bf3)
+print("El valor de real era:", v3)
 
 print("Función 4: cos(x) * e^(3x)")
 calcular(f4,af4,bf4,n4)
+v4 = integrate.quad(f4,af4,bf4)
+print("El valor de real era:", v4)
 
