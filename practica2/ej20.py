@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 import math
 import numpy as num
 import scipy as sci
@@ -53,10 +53,11 @@ def calcular(f,a,b,n):
     it2 = romberg(f,a,b,n)
 
     while (abs(it1 - it2) > 10**(-6)):
-        it1 = romberg(f,a,b,n-1)
-        it2 = romberg(f,a,b,n)
         print("\n Iteracion : |R(", n-1,") - R(",n,")|" , abs(it1 - it2) )
+        it1 = it2
         n = n+1
+        #it1 = romberg(f,a,b,n-1)
+        it2 = romberg(f,a,b,n)
 '''
 print("Función 1: x^2 * log(x)")
 calcular(f1,af1,bf1,n1)
@@ -67,7 +68,7 @@ print("Función 2: x^3 * e^(-x)")
 calcular(f2,af2,bf2,n2)
 v2 = integrate.quad(f2,af2,bf2)
 print("El valor de real era:", v2)
-''' 
+'''
 print("Función 3: (3x/(x^2 -4))")
 calcular(f3,af3,bf3,n3)
 v3 = integrate.quad(f3,af3,bf3)
@@ -77,4 +78,3 @@ print("Función 4: cos(x) * e^(3x)")
 calcular(f4,af4,bf4,n4)
 v4 = integrate.quad(f4,af4,bf4)
 print("El valor de real era:", v4)
-
