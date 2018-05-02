@@ -31,7 +31,7 @@ def romberg(f,a,b,n):
 
 def f1(x):
     return (3*x)/(x**2-4)
-        
+
 def f2(x):
     return (math.cos(x)*math.exp(3*x))
 a1=1
@@ -43,8 +43,8 @@ n=10
 resultado1 = integrate.quad(f1, a1, b1)
 resultado2 = integrate.quad(f2, a2, b2)
 
-print ("\n Resultado exactos: \n \tApartado c: ", resultado1[0], "\n\tApartado d: ", resultado2[0])
+print (" Resultado exactos:  Apartado c: ", resultado1[0], "Apartado d: ", resultado2[0])
 
 res1 = romberg(f1,a1,b1,n)
 res2 = romberg(f2, a2, b2, n)
-print("\n Los valores de la aproximacion por el metodo de Romberg son: \n\tApartado c: ", res1, "\n\tApartado d: ", res2)
+print("Los valores de la aproximacion por el metodo de Romberg son: Apartado c: ", res1, "Apartado d: ", res2)

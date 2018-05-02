@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import scipy as sp
 import numpy as np
 from numpy.polynomial import polynomial as P
@@ -16,15 +18,14 @@ def rk0( f, a, b, n ):
           for i in range(n-1):
           	fx = fx + f(x[i+1])
           resultado = ( h *( ( f(x[0]) + f(x[n]) )/2 + fx)
+    return resultado
 
-return resultado
-
-def intPuntoMedio(f,a,b)
-	return f((a+b)/2)*(b-a)
+def intPuntoMedio(f,a,b):
+    return f((a+b)/2)*(b-a)
 
 def rk( Rk, Rk1, j ):
      return Rk + (1/(4**j-1))*(Rk - Rk1)
-     
+
 #Rk = R_{k,j-1} RK1 = R_{k-1,j-1}
 def metodoRomberg(f, a, b, k):
       resultados=[]
@@ -64,13 +65,13 @@ print("Su integral real es:",integral)
 print("Su valor por el trapecio es:", trapecio)
 print("Su valor por simpson es:", simpson)
 print("Su valor por el punto medio es:", medio)
-   
-   
+
+
 
 # Apartado d)
 f = lambda x: math.cos(x)*math.exp(3*x)
 a=0
-b=math.pi 
+b=math.pi
 n = 0
 diferencia = 1
 integral = integrate(f,a,b)
@@ -93,5 +94,3 @@ print("Su integral real es:",integral)
 print("Su valor por el trapecio es:", trapecio)
 print("Su valor por simpson es:", simpson)
 print("Su valor por el punto medio es:",medio)
-
-

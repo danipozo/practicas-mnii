@@ -24,14 +24,14 @@ a = 0
 b = 2
 n = 20
 
-""" 
+"""
 Implementación
 """
 
 # Fórmula de Simpson compuesta
 def SimpsonCompuesto(f, a, b, n):
 	m = 2 * n
-	h = (b - a) / m
+	h = float((b - a)) / float(m)
 
 	nodos = []
 	for i in range(m+1):
@@ -62,7 +62,7 @@ for i in range(1, n+1):
 
 
 def intTrapecio( f, a, b, n ):
-     h = (b-a)/n
+     h = float((b-a))/float(n)
      x=[ a+h*i for i in range(n+1)]
 
      if(n<1):
@@ -81,5 +81,4 @@ b=2
 print("Método del trapecio compuesto")
 for i in range(439, 441):
         resultado = intTrapecio( f, a, b, i )
-        print("\nEl valor aproximado es:",resultado, "la diferencia con el valor exacto es: ", resultado-result[0], "con n = ", i)
-
+        print("El valor aproximado es:",resultado, "la diferencia con el valor exacto es: ", resultado-result[0], "con n = ", i)
