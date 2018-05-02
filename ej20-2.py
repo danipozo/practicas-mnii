@@ -49,7 +49,7 @@ trapecio = rk0(f,a,b,1)
 simpson = rk0(f,a,b,2)
 medio = intPuntoMedio(f,a,b)
 
-print("Función x^3*e^(-x)\n")
+print("Función 3x/(x^2-4)\n")
 
 while diferencia >= 10**(-6):
     Rk = metodoRomberg(f, a, b, n)
@@ -79,7 +79,7 @@ simpson = rk0(f,a,b,2)
 medio = intPuntoMedio(f,a,b)
 
 
-print("Función x^3*e^(-x)\n")
+print("Función cos(x)*e^(3x)\n")
 while diferencia >= 10**(-6):
     Rk = metodoRomberg(f, a, b, n)
     Rk1 = metodoRomberg(f, a, b, n+1)
