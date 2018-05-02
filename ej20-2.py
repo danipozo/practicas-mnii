@@ -57,7 +57,7 @@ while diferencia >= 10**(-6):
     print("R{0},{0} =".format(n), Rk )
     print("R{0},{0} =".format(n+1), Rk1 )
     diferencia = abs(Rk-Rk1)
-    print("|R{0},{0}-R{1},{1}| =".format(n, n+1), diff)
+    print("|R{0},{0}-R{1},{1}| =".format(n, n+1), diferencia)
     print("\n")
     cont = n+1
 print("Su integral real es:",integral)
@@ -86,7 +86,7 @@ while diferencia >= 10**(-6):
     print("R{0},{0} =".format(n), Rk )
     print("R{0},{0} =".format(n+1), Rk1 )
     diferencia = abs(Rk-Rk1)
-    print("|R{0},{0}-R{1},{1}| =".format(n, n+1), diff)
+    print("|R{0},{0}-R{1},{1}| =".format(n, n+1), diferencia)
     print("\n")
     cont = n+1
 print("Su integral real es:",integral)
