@@ -4,7 +4,8 @@ import scipy as sp
 import numpy as np
 from numpy.polynomial import polynomial as P
 import math
-from scipy.integrate import quad
+import scipy.integrate as integrate
+import scipy.special as special
 
 def rk0( f, a, b, n ):
      if(n==1):
@@ -43,7 +44,7 @@ a=1
 b=1.8
 n = 0
 diferencia = 1
-integral = integrate(f,a,b)
+integral = integrate.quad(f,a,b)
 trapecio = rk0(f,a,b,1)
 simpson = rk0(f,a,b,2)
 medio = intPuntoMedio(f,a,b)
@@ -72,7 +73,7 @@ a=0
 b=math.pi
 n = 0
 diferencia = 1
-integral = integrate(f,a,b)
+integral = integrate.quad(f,a,b)
 trapecio = rk0(f,a,b,1)
 simpson = rk0(f,a,b,2)
 medio = intPuntoMedio(f,a,b)
