@@ -17,8 +17,8 @@ def rk0( f, a, b, n ):
           fx = 0
           for i in range(n-1):
           	fx = fx + f(x[i+1])
-          resultado = ( h *( ( f(x[0]) + f(x[n]) )/2 + fx)
-    return resultado
+          resultado = ( h *( ( f(x[0]) + f(x[n]) )/2 + fx ) ) 
+     return resultado
 
 def intPuntoMedio(f,a,b):
     return f((a+b)/2)*(b-a)
@@ -28,16 +28,14 @@ def rk( Rk, Rk1, j ):
 
 #Rk = R_{k,j-1} RK1 = R_{k-1,j-1}
 def metodoRomberg(f, a, b, k):
-      resultados=[]
-      resultados.append( rk0( f, a, b, 1 ) )
-      for i in range(k):
-           resultados.append( rk0( f, a, b, 2**(i+1) ) )
-
-      for i in range(k):
-           for j in range(k-i):
-               resultados[j]=rk( resultados[j+1], resultados[j], i+1 )
-
-return resultados[0]
+		resultados=[]
+		resultados.append( rk0( f, a, b, 1 ) )
+		for i in range(k):
+			resultados.append( rk0( f, a, b, 2**(i+1) ) )
+		for i in range(k):
+			for j in range(k-i):
+		    		resultados[j]=rk( resultados[j+1], resultados[j], i+1 )
+		return resultados[0]
 
 #Apartado c)
 f = lambda x: 3*x/(x**2 - 4)
