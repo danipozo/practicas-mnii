@@ -18,7 +18,7 @@ def rk0( f, a, b, n ):
           fx = 0
           for i in range(n-1):
           	fx = fx + f(x[i+1])
-          resultado = ( h *( ( f(x[0]) + f(x[n]) )/2 + fx ) ) 
+          resultado = ( h *( ( f(x[0]) + f(x[n]) )/2 + fx ) )
      return resultado
 
 def intPuntoMedio(f,a,b):
@@ -50,16 +50,13 @@ simpson = rk0(f,a,b,2)
 medio = intPuntoMedio(f,a,b)
 
 print("Función 3x/(x^2-4)\n")
-
+print ("Iteracion\t |\t R{n-1},{n-1}\t|\t R{n},{n} \t| \t Diferencia")
 while diferencia >= 10**(-6):
     Rk = metodoRomberg(f, a, b, n)
     Rk1 = metodoRomberg(f, a, b, n+1)
-    print("R{0},{0} =".format(n), Rk )
-    print("R{0},{0} =".format(n+1), Rk1 )
     diferencia = abs(Rk-Rk1)
-    print("|R{0},{0}-R{1},{1}| =".format(n, n+1), diferencia)
-    print("\n")
-    cont = n+1
+    print( format(n) + "\t\t | \t"+ str( Rk)+ "\t|\t"+ str(Rk1)+ "\t|\t" + str(diferencia))
+    n = n+1
 print("Su integral real es:",integral)
 print("Su valor por el trapecio es:", trapecio)
 print("Su valor por simpson es:", simpson)
@@ -70,7 +67,7 @@ print("Su valor por el punto medio es:", medio)
 # Apartado d)
 f = lambda x: math.cos(x)*math.exp(3*x)
 a=0
-b=math.pi
+b=math.pi/4
 n = 0
 diferencia = 1
 integral = integrate.quad(f,a,b)
@@ -80,15 +77,13 @@ medio = intPuntoMedio(f,a,b)
 
 
 print("Función cos(x)*e^(3x)\n")
+print ("Iteracion\t |\t R{n-1},{n-1}\t|\t R{n},{n} \t| \t Diferencia")
 while diferencia >= 10**(-6):
     Rk = metodoRomberg(f, a, b, n)
     Rk1 = metodoRomberg(f, a, b, n+1)
-    print("R{0},{0} =".format(n), Rk )
-    print("R{0},{0} =".format(n+1), Rk1 )
     diferencia = abs(Rk-Rk1)
-    print("|R{0},{0}-R{1},{1}| =".format(n, n+1), diferencia)
-    print("\n")
-    cont = n+1
+    print( format(n) + "\t\t | \t"+ str( Rk)+ "\t|\t"+ str(Rk1)+ "\t|\t" + str(diferencia))
+    n = n+1
 print("Su integral real es:",integral)
 print("Su valor por el trapecio es:", trapecio)
 print("Su valor por simpson es:", simpson)
