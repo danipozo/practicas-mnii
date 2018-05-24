@@ -1,19 +1,20 @@
 
 import numpy as num
+from decimal import *
 import scipy as sci
 from numpy.polynomial import polynomial as pol
 
 
 def euler(f,a,b,n ,y_0):
-    h = (b-a)/n
+    h=Decimal((b-a))/Decimal(n)
     vals = []
     vals.append(y_0)
     print("u_0=", vals[0])
-    for i in range (1, n):
-        tj = a+i*h
-        x = vals[i-1] + h*f(tj,vals[i-1])
+    for i in range (0, n-1):
+        tj =Decimal(a+(i+1)*h)
+        x = vals[i] + h*f(tj,Decimal(vals[i]))
         vals.append(x)
-        print("u_",i,"=",x)
+        print("u_",i+1,"=",x)
 
 
 def f(t,x):
