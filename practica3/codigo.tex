@@ -2,6 +2,7 @@
 %Gummi|065|=)
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
+\usepackage{graphicx}
 \title{\textbf{Código en python de los algoritmos práctica 3}}
 \author{Javier Sáez, Laura Gómez, Daniel Pozo, Luis Ortega}
 \date{}
@@ -67,27 +68,71 @@ f0 = 1
 
 euler(f,0,1,10,f0)
 \end{lstlisting}
-Vamos a ejecutarlo con la función:
-\[
-
-\]
+Vamos a ejecutarlo con la función $f = -x+t+1$
 En el intervalo $[0,1]$ y con $n=10$.
 El resultado es:
 \begin{center}
-  \includegraphics[scale=0.4]{1.png}
+  \includegraphics[scale=0.8]{1.png}
 \end{center}
 
 \section{Ejercicio 2 - Taylor de orden r}
-
-\section{Ejercicio 5 - Runge-Kutta }
 \begin{lstlisting}
   # -*- coding: utf-8 -*-
-"""
-    Estos serán los valores iniciales de nuestro programa:
-    f(x,y) representa a la función de nuestro P.V.I
-    [a,b] es el intervalo donde queremos aproximar
-    n+1 serán los puntos de en los que aproximaremos.
-"""
+import numpy
+import itertools as it
+from math import factorial
+from sympy import symbols, diff, log
+def genf(r, f, t ,y, t_s, y_s):
+    faux = f
+    for i in range(1, r):
+        faux = diff(faux, t_s) + diff(faux, y_s)*f
+        yield faux.subs(t_s,t).subs(y_s,y).evalf()
+
+def T(t,y,h,f,r, t_s, y_s):
+
+    suma = f.subs(t_s,t).subs(y_s,y).evalf()
+    for i,f_i in enumerate(genf(r, f, t ,y, t_s, y_s)):
+        suma += ((h**(i+1))/(factorial(i+2)))*f_i
+
+    return suma
+
+def taylor(f,a,b,n,y_0,r, t_s, y_s):
+    uj = y_0
+    h = float(b - a)/float(n)
+    tj = float(a)
+    print ("Indice\t |  t  |  Aproximado(u) \t| Real(y) \t\t| Error")
+    for i in range (1, n+2):
+        yield uj
+        valor=func_y.subs(t,tj).evalf()
+        print (str(i)+"\t | "+str(tj)+" |"+str(uj)+"\t|"+str(valor)+"  \t| "+str(valor-uj))
+        uj = uj + h*T(tj, uj, h, f, r, t_s, y_s)
+        tj = tj + h
+
+
+t, y = symbols( 't y', real = True)
+
+f = y**2/(1+t)
+
+func_y= -1/log(t+1)
+
+a = 1
+b = 2
+n = 10
+y_0 = (-1/log(t+1)).subs(t,1).evalf()
+
+print(f)
+for i in taylor(f, a, b, n, y_0, 2, t, y):
+    i
+  \end{lstlisting}
+
+Y si lo ejecutamos con $f=y^2/(1+t)$, y $[a,b]=[1,2]$, $n=10$ y $r=2$ obtenemos:
+\begin{center}
+\includegraphics[scale=0.5]{Taylor.png}
+  \end{center}
+\section{Ejercicio 5 - Runge-Kutta }
+
+\begin{lstlisting}
+  # -*- coding: utf-8 -*-
 
 import math
 
@@ -96,10 +141,10 @@ def RungeKutta(f,a,b,n ,y_0):
     vals = []
     vals.append(y_0)
     valor=y(1)
-    print ("Índice\t |  t  |  Aproximado(u) | Real(y) \t\t| Error")
+    print ("Indice\t |  t  |  Aproximado(u) | Real(y) \t\t| Error")
     print ("0\t |  1  |"+str(y_0)+"\t|"+str(valor)+"  \t| "+str(valor-y_0))
     """
-        NOTA: Ahora mismo los valores tj se machacan con cada interacción y los
+        NOTA: Ahora mismo los valores tj se machacan con cada interacion y los
         valores aproximados u se almacenan en el vector vals.
     """
     for i in range (0, n-1):
@@ -167,9 +212,84 @@ pMedio(f,0,1,10,f0)
 \end{lstlisting}
 Si lo ejecutamos con la misma función y otros parámetros del ejercicio 1, obtenemos:
 \begin{center}
-  \includegraphics[scale=0.4]{7.png}
+  \includegraphics[scale=0.8]{7.png}
 \end{center}
 
-\section{Ejercicio 8}
+\section{Ejercicio 8- Adams-Bashforth}
 
+\begin{lstlisting}
+# PROGRAMA 8
+# -*- coding: utf-8 -*-
+
+from math import fabs, exp
+from scipy.interpolate import lagrange
+from scipy.integrate import quad
+
+a = 0.0
+b = 1.0
+n = 10
+k = 4
+
+# Funcion f de dos variables
+f = lambda t,y: -y + t + 1.0
+
+# Solucion exacta
+sol_exacta = True
+y = lambda t: exp(-t) + t
+
+# Lista con las aproximaciones u_{0},..,u_{k-1}
+# (en caso de no tener la solucion exacta) 
+inicial = []
+
+h = (b - a) / n
+t = [a + j * h for j in range(n + 1)]
+u = [0 for i in range(n + 1)] # Lista "vacia" con n+1 posiciones
+
+def integrate_interpolation_polynomial(j):
+	x = []
+	y = []
+	for i in range(k):
+		x.append(t[j-i])
+		y.append(f(x[i], u[j-i]))
+
+	poly = lagrange(x,y)
+	return quad(poly, t[j], t[j+1])[0]
+	
+def adams_bashforth(j):
+	if j < k:
+		return u[j]
+		
+	u_j = adams_bashforth(j-1) + integrate_interpolation_polynomial(j-1)
+	u[j] = u_j
+	return u_j
+
+"""
+Main
+"""
+
+if sol_exacta:
+	for i in range(k):
+		u[i] = y(t[i])
+else:
+	for i in range(k):
+		u[i] = inicial[i]
+
+adams_bashforth(n)
+print("Las", n, "aproximaciones son: ")
+for item in u:
+    print(item)
+if sol_exacta:
+    print("Los errores son: ")
+    for j in range(n + 1):
+        print(fabs(u[j] - y(t[j])))
+\end{lstlisting}
+
+Y si lo ejecutamos con $f=-y+t+1$,$[a,b]=[0,1]$,$n=10$, $k=4$ obtenemos:
+
+
+
+
+\begin{center}
+  \includegraphics[scale=0.6]{8.png}
+\end{center}
 \end{document}
