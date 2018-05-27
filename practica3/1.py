@@ -9,12 +9,15 @@ def euler(f,a,b,n ,y_0):
     h=Decimal((b-a))/Decimal(n)
     vals = []
     vals.append(y_0)
-    print("u_0=", vals[0])
+    print ("Indice\t |  t  |  Aproximado(u) ")
+    print("0\t |  0  |\t"+str(y_0)) 
+    
     for i in range (0, n-1):
         tj =Decimal(a+(i+1)*h)
         x = vals[i] + h*f(tj,Decimal(vals[i]))
         vals.append(x)
-        print("u_",i+1,"=",x)
+        print(str(i+1)+"\t | "+str(tj)+" |"+"\t"+str(x))
+        """print("u_",i+1,"=",x)"""
 
 
 def f(t,x):

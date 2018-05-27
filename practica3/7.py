@@ -7,14 +7,16 @@ def pMedio(f,a,b,n,y_0):
     h=Decimal((b-a))/Decimal(n)
     vals = []
     vals.append(y_0)
-    print("u_0=", vals[0])
+    print ("Indice\t |  t  |  Aproximado(u) ")
+    print ("0\t |  0  |\t"+str(y_0))
     vals.append(euler1(f,a,b,n,y_0))
-    print("u_1=", vals[1])
+    print ("1\t | "+ str(h) + " |\t"+str(vals[1]))
     for i in range (2, n):
-        tj = Decimal(a+i*h)
+        tj = a+(i*h)
         x = vals[i-2] + Decimal(2*h*f(tj,vals[i-1]))
         vals.append(x)
-        print("u_",i,"=",x)
+        print(str(i)+"\t | "+str(tj)+" |\t"+str(x))
+
 
 
 def euler1(f,a,b,n,y_0):
@@ -22,6 +24,9 @@ def euler1(f,a,b,n,y_0):
     tj = Decimal(a+h)
     x = y_0 + h*f(tj,y_0)
     return x
+
+def y(t,x):
+	return -x*t + math.pow(t,2)/2 + t
 
 def f(t,x):
     return -x + t + 1
