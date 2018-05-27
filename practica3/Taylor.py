@@ -4,18 +4,10 @@ import numpy
 import itertools as it
 from sympy import symbols, diff
 
-def derivadaparcial1 (g, y_0, t_0):
-    h = 1e-7
-    return (g(y_0 + h, t_0) - g(y_0 - h, t_0))/(2*h)
-
-def derivadaparcial2 (g, y_0, t_0):
-    h = 1e-7
-    return (g(y_0, t_0+h) - g(y_0, t_0 - h))/(2*h)
-
 def genf(r, f, t ,y):
     faux = f
     for i in range(1, r):
-        f = diff(f, y, t) + diff(f, y, t)*faux.subs(t,y)
+        f = diff(f, t) + diff(f, y)*faux.subs(t,y)
         yield f(y, t)
 
 def T(t,y,h,f,r):
