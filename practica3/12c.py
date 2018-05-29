@@ -80,10 +80,9 @@ else:
 i = 0
 adams_bashforth(n)
 print("Se han obtenido las 4 primeras iteraciones por el método de Runge Kutta")
-print("Iteracion \t|Aproximacion \t| Valor Real \t|  Error")
+print("Iteracion \tAproximacion \t Valor Real \t  Error")
 for item in u:
-        a = abs(y(t[i]) - item)
-        print("\t"+str(i)+ "\t|"+str(item)+"\t|"+ str(y(t[i])) + " \t| " + str(a))
+        error = abs(y(t[i]) - item)
+        print(str(a+i*h)+ " "+str(item)+" "+ str(y(t[i])) + " " + str(error))
        # print(str(i)+ "\t |" +str(item) +"\t |" +str(y(t[i])+ "\t| " + str(a))
         i +=1
-

@@ -1,0 +1,40 @@
+\documentclass[12pt]{memoir}
+\usepackage{vmargin}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\setmargins{1.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{19.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}                           % espacio entre el texto y el pie de página
+
+\begin{document}
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+
+\multicolumn{1}{|c|}{\textbf{t}} & \textbf{AB con Euler} & \textbf{Real(y)}                   & \textbf{AB con RK} & \textbf{Error Euler} & \textbf{Error RK} \\ \hline
+0.0                                                      & 1.0                   & 1.0                                & 1.0                & 0.0                  & 0.0               \\ \hline
+0.1                                                      & 1.35294117647         & 1.18811881188                      & 1.24996302143      & 0.164822364589       & 0.0618442095443   \\ \hline
+0.2                                                      & 1.48235294118         & 1.34615384615                      & 1.31993738262      & 0.136199095023       & 0.0262164635318   \\ \hline
+0.3                                                      & 1.44658823529         & 1.46788990826                      & 1.28118575747      & 0.0213016729628      & 0.186704150792    \\ \hline
+0.4                                                      & 1.54097490022         & 1.55172413793                      & 1.38422453712      & 0.0107492377157      & 0.167499600807    \\ \hline
+0.5                                                      & 1.5815961338          & 1.6                                & 1.43610281004      & 0.0184038662033      & 0.163897189955    \\ \hline
+0.6                                                      & 1.60508856878         & \multicolumn{1}{l|}{1.61764705882} & 1.47138744517      & 0.0125584900444      & 0.146259613656    \\ \hline
+0.7                                                      & 1.59827266792         & \multicolumn{1}{l|}{1.61073825503} & 1.47624472652      & 0.0124655871154      & 0.134493528511    \\ \hline
+0.8                                                      & 1.57517560931         & \multicolumn{1}{l|}{1.58536585366} & 1.46431220055      & 0.0101902443523      & 0.12105365311     \\ \hline
+0.9                                                      & 1.53749639066         & \multicolumn{1}{l|}{1.54696132597} & 1.43705545835      & 0.00946493530745     & 0.109905867613    \\ \hline
+1.0                                                      & 1.49169270865         & \multicolumn{1}{l|}{1.5}           & 1.40080550148      & 0.00830729135409     & 0.0991944985163   \\ \hline
+\end{tabular}
+\end{table}
+
+\end{document}
