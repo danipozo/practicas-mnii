@@ -6,17 +6,20 @@ from scipy.interpolate import lagrange
 from scipy.integrate import quad
 from decimal import *
 
+
 a = 0.0
 b = 1.0
 n = 10
 k = 4
 
 # Función f de dos variables
-f = lambda t,y: (2-2*t*y)/(1+pow(t,2))
+def f(t,y):
+	return (2-2*t*y)/(1+pow(t,2))
 
 # Solución exacta
 sol_exacta = False
-y = lambda t: (2*t+1)/(pow(t,2)+1)
+def y(t):
+	return (2*t+1)/(pow(t,2)+1)
 y_0 = 1
 
 # Lista con las aproximaciones u_{0},..,u_{k-1}
@@ -46,20 +49,22 @@ def adams_bashforth(j):
 	return u_j
 
 def euler(f,a,b,n ,y_0):
-    h=Decimal((b-a))/Decimal(n)
-    inicial[0] =y_0  
+    h=(b-a)/n
+    inicial.append(y_0)
     for i in range (0, n-1):
-        tj =Decimal(a+(i+1)*h)
-        x = inicial[i] + h*f(tj,Decimal(inicial[i]))
-        inicial[i+1] = x
-
+        tj =a+(i+1)*h
+        print("ini"+str(i)+"="+ str(inicial[i]))
+        print("f"+str(i)+"="+ str(h*f(tj,inicial[i])))
+        x = inicial[i] + h*f(tj,inicial[i])
+        inicial.append(x)
+        print("It"+str(i)+ " val"+str(x))
 
 
 
 """
 Main
 """
-euler(f,0,1,10,y_0)
+euler(f,0,1,4,y_0)
 
 
 if sol_exacta:
