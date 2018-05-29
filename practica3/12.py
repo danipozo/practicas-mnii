@@ -20,10 +20,10 @@ def f(t,y):
 sol_exacta = False
 def y(t):
 	return (2*t+1)/(pow(t,2)+1)
-y_0 = 1
+y_0 = 1.0
 
 # Lista con las aproximaciones u_{0},..,u_{k-1}
-# (en caso de no tener la solución exacta) 
+# (en caso de no tener la solución exacta)
 inicial = []
 
 h = (b - a) / n
@@ -39,17 +39,17 @@ def integrate_interpolation_polynomial(j):
 
 	poly = lagrange(x,y)
 	return quad(poly, t[j], t[j+1])[0]
-	
+
 def adams_bashforth(j):
 	if j < k:
 		return u[j]
-		
+
 	u_j = adams_bashforth(j-1) + integrate_interpolation_polynomial(j-1)
 	u[j] = u_j
 	return u_j
 
 def euler(f,a,b,n ,y_0):
-    h=(b-a)/n
+    h=float(b-a)/n
     inicial.append(y_0)
     for i in range (0, n-1):
         tj =a+(i+1)*h
