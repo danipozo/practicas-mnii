@@ -53,11 +53,9 @@ def euler(f,a,b,n ,y_0):
     inicial.append(y_0)
     for i in range (0, n-1):
         tj =a+(i+1)*h
-        print("ini"+str(i)+"="+ str(inicial[i]))
-        print("f"+str(i)+"="+ str(h*f(tj,inicial[i])))
         x = inicial[i] + h*f(tj,inicial[i])
         inicial.append(x)
-        print("It"+str(i)+ " val"+str(x))
+
 
 
 
@@ -74,11 +72,13 @@ else:
 	for i in range(k):
 		u[i] = inicial[i]
 
+i = 0
 adams_bashforth(n)
-print("Las", n, "aproximaciones son: ")
+print("Se han obtenido las 4 primeras iteraciones por el método de euler")
+print("Iteracion \t|Aproximacion \t| Valor Real \t|  Error")
 for item in u:
-    print(item)
-if sol_exacta:
-    print("Los errores son: ")
-    for j in range(n + 1):
-        print(fabs(u[j] - y(t[j])))
+        a = abs(y(t[i]) - item)
+        print("\t"+str(i)+ "\t|"+str(item)+"\t|"+ str(y(t[i])) + " \t| " + str(a))
+       # print(str(i)+ "\t |" +str(item) +"\t |" +str(y(t[i])+ "\t| " + str(a))
+        i +=1
+
