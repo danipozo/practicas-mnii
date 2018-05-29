@@ -1,0 +1,40 @@
+\documentclass[12pt,b4paper,landscape]{memoir}
+\usepackage{vmargin}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\setmargins{1.5cm}       % margen izquierdo
+{1.5cm}                        % margen superior
+{19.5cm}                      % anchura del texto
+{23.42cm}                    % altura del texto
+{10pt}                           % altura de los encabezados
+{1cm}                           % espacio entre el texto y los encabezados
+{0pt}                             % altura del pie de página
+{2cm}                           % espacio entre el texto y el pie de página
+
+\begin{document}
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[]
+
+\begin{tabular}{|l|l|r|l|l|l|l|l|}
+\hline
+
+\multicolumn{1}{|c|}{\textbf{t}} & \textbf{Runge-Kutta Orden 4} & \textbf{Taylor Orden 2}                 & \textbf{Taylor Orden 4} & \textbf{Real(y)}   & \textbf{Error Kutta} & \textbf{Error Taylor Orden 2} & \textbf{Error Taylor Orden 4} \\ \hline
+1.0                                                      & -1.44269504088896            & -1.44269504088896                       & -1.44269504088896       & -1.44269504088896  & 0                    & 0                             & 0                             \\ \hline
+1.1                                                      & -1.35195935082269            & -1.34873525483283                       & -1.34783180225188       & -1.34782270646418  & 0.00413664435850625  & 0.000912548368647625          & 9.09578770014186e-6           \\ \hline
+1.2                                                      & -1.27531665910911            & -1.26973794720399                       & -1.26831263619734       & -1.26829940370903  & 0.00701725540008025  & 0.00143854349496197           & 1.32324883146406e-5           \\ \hline
+1.3                                                      & -1.20965995214472            & -1.20234967136413                       & -1.20062612644675       & -1.20061117409314  & 0.00904877805158089  & 0.00173849727099218           & 1.49523536094875e-5           \\ \hline
+1.4                                                      & -1.15273694981335            & -1.14414771293982                       & -1.14226070255716       & -1.14224524227158  & 0.0104917075417648   & 0.00190247066824467           & 1.54602855810815e-5           \\ \hline
+1.5                                                      & -1.10287469410405            & -1.09333961444766                       & -1.09137202301081       & -1.09135666793729  & 0.0115180261667598   & 0.00198294651037179           & 1.53550735217944e-5           \\ \hline
+1.6                                                      & -1.05880423725046            & \multicolumn{1}{l|}{-1.04857141738952}  & -1.04657488453698       & -1.04655993939590  & 0.0122442978545645   & 0.00201147799362111           & 1.49451410849100e-5           \\ \hline
+1.7                                                      & -1.01954539917486            & \multicolumn{1}{l|}{-1.00880160222078}  & -1.00680846832151       & -1.00679407494966  & 0.0127513242251940   & 0.00200752727111775           & 1.43933718461664e-5           \\ \hline
+1.8                                                      & -0.984328872280693           & \multicolumn{1}{l|}{-0.973216005606330} & -0.971246441794255      & -0.971232654817011 & 0.0130962174636823   & 0.00198335078931944           & 1.37869772445232e-5           \\ \hline
+1.9                                                      & -0.952542271986822           & \multicolumn{1}{l|}{-0.941169031915503} & -0.939235409517069      & -0.939222236853531 & 0.0133200351332908   & 0.00194679506197271           & 1.31726635379525e-5           \\ \hline
+2.0                                                      & -0.923691960236623           & \multicolumn{1}{l|}{-0.912142172279551} & -0.910251801601776      & -0.910239226626837 & 0.0134527336097857   & 0.00190294565271365           & 1.25749749390058e-5           \\ \hline
+\end{tabular}
+\end{table}
+
+\end{document}

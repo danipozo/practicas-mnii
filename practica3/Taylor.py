@@ -25,7 +25,7 @@ def taylor(f,a,b,n,y_0,r, t_s, y_s):
     for i in range (1, n+2):
         yield uj
         valor=func_y.subs(t,tj).evalf()
-        print (str(i)+"\t | "+str(tj)+" |"+str(uj)+"\t|"+str(valor)+"  \t| "+str(valor-uj))
+        print (str(i)+"\t  "+str(tj)+" \t"+str(uj)+"\t"+str(valor)+"  \t "+str(valor-uj))
         uj = uj + h*T(tj, uj, h, f, r, t_s, y_s)
         tj = tj + h
 
