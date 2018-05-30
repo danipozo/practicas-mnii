@@ -32,9 +32,9 @@ def RungeKutta(f,a,b,n ,y_0):
         Ki.append(f(tj+h/2,vals[i]+(h/2)*Ki[1]))
         Ki.append(f(tj+h,vals[i]+h*Ki[2]))
         x = vals[i] + (h/6)*(Ki[0]+2*Ki[1]+2*Ki[2]+Ki[3])
-        valor=func_y.subs(t,tj).evalf()
+        valor=func_y.subs(t,tj+h).evalf()
         vals.append(x)
-        print (str(i+1)+"\t | "+str(tj)+" |"+str(x)+"\t|"+str(valor)+"  \t| "+str(valor-x))
+        print (str(i+1)+"\t | "+str(tj+h)+" |"+str(x)+"\t|"+str(valor)+"  \t| "+str(valor-x))
 
 
 def f(t,x):
