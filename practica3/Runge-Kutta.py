@@ -25,7 +25,7 @@ def RungeKutta(f,a,b,n ,y_0):
         avisarla y lo cambio
     """
     for i in range (0, n):
-        tj =a+(i+1)*h
+        tj =a+(i)*h
         Ki = []
         Ki.append(f(tj,vals[i]))
         Ki.append(f(tj+h/2,vals[i]+(h/2)*Ki[0]))

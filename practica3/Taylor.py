@@ -5,7 +5,7 @@ from math import factorial
 from sympy import symbols, diff, log
 def genf(r, f, t ,y, t_s, y_s):
     faux = f
-    for i in range(1, r):
+    for i in range(1, r): """ Aquí ella dice que es r-1 en lugar de r"""
         faux = diff(faux, t_s) + diff(faux, y_s)*f
         yield faux.subs(t_s,t).subs(y_s,y).evalf()
 
@@ -13,7 +13,8 @@ def T(t,y,h,f,r, t_s, y_s):
 
     suma = f.subs(t_s,t).subs(y_s,y).evalf()
     for i,f_i in enumerate(genf(r, f, t ,y, t_s, y_s)):
-        suma += ((h**(i+1))/(factorial(i+2)))*f_i
+        suma += ((h**(i+1))/(factorial(i+2)))*f_i """Dice que el fallo debe de estar (aún habiendo cambiado el r)
+        Según ella debe ser cualquier variación en algún índice"""
 
     return suma
 
